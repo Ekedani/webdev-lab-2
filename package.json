@@ -1,0 +1,28 @@
+{
+    "name": "webdev-lab-2",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "jslint": "eslint \"js/**/*.js\"",
+        "format": "prettier --write .",
+        "stylelint": "stylelint \"**/*.css\"",
+        "prepare": "husky install"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^7.32.0",
+        "eslint-config-google": "^0.14.0",
+        "eslint-config-standard": "^16.0.3",
+        "eslint-plugin-import": "^2.24.2",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^5.1.0",
+        "eslint-plugin-sonarjs": "^0.10.0",
+        "husky": "^7.0.2",
+        "prettier": "2.4.1",
+        "stylelint": "^13.13.1",
+        "stylelint-config-standard": "^22.0.0"
+    }
+}

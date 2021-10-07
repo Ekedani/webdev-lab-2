@@ -29,6 +29,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    font-family: Arial, sans-serif;
 }
 
 .contact-form {
@@ -41,10 +42,6 @@ body {
     height: 50%;
     width: 400px;
     border-radius: 30px;
-}
-
-.contact-form h1 {
-    font-family: Arial, sans-serif;
 }
 
 .contact-form input,

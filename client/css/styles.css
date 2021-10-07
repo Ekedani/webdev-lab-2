@@ -6,6 +6,7 @@
     --form-submit-primary: #ef233c;
     --form-submit-dark: #900;
     --form-submit-text: #fff;
+    --form-submit-disabled: #e6c8cc;
 
     /* Indentation settings */
     --default-padding: 10px;
@@ -72,4 +73,21 @@ body {
 
 .contact-form button:hover {
     background: var(--form-submit-dark);
+}
+
+.contact-form button:disabled {
+    background: var(--form-submit-disabled);
+}
+
+.content-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
 }

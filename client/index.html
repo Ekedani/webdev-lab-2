@@ -10,10 +10,19 @@
         <title>Contact form</title>
         <link href="/client/css/normalize.css" rel="stylesheet" />
         <link href="/client/css/styles.css" rel="stylesheet" />
+        <link href="/client/css/spinner.css" rel="stylesheet" />
     </head>
     <body>
         <form class="contact-form">
             <h1>Contact us</h1>
+            <div class="content-block">
+                <div class="spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
             <input name="first-name" placeholder="First name" />
             <input name="last-name" placeholder="Last name" />
             <input name="email" placeholder="Email" type="email" required />
@@ -24,5 +33,6 @@
             ></textarea>
             <button type="submit">Submit</button>
         </form>
+        <script src="js/index.js"></script>
     </body>
 </html>

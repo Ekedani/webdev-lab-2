@@ -1,3 +1,78 @@
 :root {
-    --background-primary: white;
+    /* Color scheme */
+    --background-primary: #2b2d42;
+    --form-primary: #8d99ae;
+    --form-fields: #edf2f4;
+    --form-submit-primary: #ef233c;
+    --form-submit-dark: #900;
+    --form-submit-text: #fff;
+
+    /* Indentation settings */
+    --default-padding: 10px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+body {
+    background-color: var(--background-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.contact-form {
+    background-color: var(--form-primary);
+    padding: var(--default-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 400px;
+    border-radius: 30px;
+}
+
+.contact-form h1 {
+    font-family: Arial, sans-serif;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 90%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 20px;
+    background: var(--form-fields);
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form button {
+    width: 90%;
+    padding: var(--default-padding);
+    margin-top: 20px;
+    border-radius: 20px;
+    border: none;
+    background: var(--form-submit-primary);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--form-submit-text);
+}
+
+.contact-form button:hover {
+    background: var(--form-submit-dark);
 }

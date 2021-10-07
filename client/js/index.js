@@ -1,6 +1,6 @@
 const form = document.querySelector('.contact-form');
 const formSubmitButton = form.querySelector('button');
-const formMessage = form.querySelector('textarea');
+//const formMessage = form.querySelector('textarea');
 const contentBlock = document.querySelector('.content-block');
 
 const changeButtonState = (button, isActive) => {

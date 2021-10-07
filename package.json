@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "jslint": "eslint \"js/**/*.js\"",
+        "jslint": "eslint \"**/*.js\"",
         "format": "prettier --write .",
         "stylelint": "stylelint \"**/*.css\"",
         "prepare": "husky install"

@@ -6,6 +6,6 @@ export default class MessageSender {
   }
 
   async sendFormData () {
-    this.emailSender.send('<h1>Hello World!</h1>', true);
+    await this.emailSender.send('<h1>Hello World!</h1>', true);
   }
 }

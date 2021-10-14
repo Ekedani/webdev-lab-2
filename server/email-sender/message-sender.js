@@ -1,11 +1,13 @@
 import { EmailSender } from './index';
+import htmlConverter from "../form-processing/html-converter";
 
 export default class MessageSender {
   constructor () {
     this.emailSender = new EmailSender();
   }
 
-  async sendFormData () {
-    await this.emailSender.send('<h1>Hello World!</h1>', true);
+  async sendFormData (formData) {
+    const message = htmlConverter(formData);
+    await this.emailSender.send(message, true);
   }
 }

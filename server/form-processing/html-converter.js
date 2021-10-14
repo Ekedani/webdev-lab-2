@@ -1,13 +1,11 @@
 function htmlConverter (formData) {
   return `
     <table>
-        <thead>
-        <tr>
+        <tbody>
+         <tr>
             <th>First name</th>
             <th>${formData.firstname}</th>
         </tr>
-        </thead>
-        <tbody>
         <tr>
             <td>Last name</td>
             <td>${formData.lastname}</td>

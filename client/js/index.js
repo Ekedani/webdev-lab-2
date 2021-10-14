@@ -39,13 +39,12 @@ const formSender = async (event) => {
   changeButtonState(formSubmitButton, false);
   showBlock(contentBlock);
 
+  const formData = parseForm(form);
   try {
       const res = callMessageAPI(formData, 'POST');
   } catch (exception){
 
   }
-
-  const formData = parseForm(form);
 };
 
 formSubmitButton.addEventListener('click', formSender);

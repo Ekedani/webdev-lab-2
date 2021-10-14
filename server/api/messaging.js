@@ -1,9 +1,11 @@
-// import { MessageSender } from '../email-sender/index.js';
+import { MessageSender } from '../email-sender/index.js';
 
-/* export default (req, res) => {
+const messageSender = new MessageSender();
+
+export default (req, res) => {
   try {
-
+    messageSender.sendFormData().then(res.send).catch(res.send);
   } catch (error) {
-
+    res.send('ERROR');
   }
-}; */
+};

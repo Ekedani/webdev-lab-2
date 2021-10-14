@@ -1,6 +1,15 @@
+const API_ROUTE = 'https://webdev-lab-2-messaging.vercel.app/api';
+
+const callMessageAPI = (data, method) => {
+  return fetch(`${API_ROUTE}/messaging`, {
+      method,
+      'Content-Type': data ? 'application/json' : null,
+      body: data ? JSON.stringify(data) : null,
+  }).then((response) => response.json());
+};
+
 const form = document.querySelector('.contact-form');
 const formSubmitButton = form.querySelector('button');
-// const formMessage = form.querySelector('textarea');
 const contentBlock = document.querySelector('.content-block');
 
 const changeButtonState = (button, isActive) => {
@@ -29,6 +38,12 @@ const formSender = async (event) => {
 
   changeButtonState(formSubmitButton, false);
   showBlock(contentBlock);
+
+  try {
+      const res = callMessageAPI(formData, 'POST');
+  } catch (exception){
+
+  }
 
   const formData = parseForm(form);
 };

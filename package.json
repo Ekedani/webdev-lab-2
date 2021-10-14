@@ -5,8 +5,11 @@
     "main": "index.js",
     "scripts": {
         "jslint": "eslint \"**/*.js\"",
-        "format": "prettier --write .",
+        "jslint:fix": "eslint \"**/*.js\" --fix",
+        "format": "prettier .",
+        "format:fix": "prettier --write .",
         "stylelint": "stylelint \"**/*.css\"",
+        "stylelint:fix": "stylelint \"**/*.css\"",
         "prepare": "husky install"
     },
     "keywords": [],

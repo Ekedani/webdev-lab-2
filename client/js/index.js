@@ -4,11 +4,11 @@ const formSubmitButton = form.querySelector('button');
 const contentBlock = document.querySelector('.content-block');
 
 const changeButtonState = (button, isActive) => {
-    button.disabled = !isActive;
+  button.disabled = !isActive;
 };
 
 const showBlock = (block) => {
-    block.style.visibility = 'visible';
+  block.style.visibility = 'visible';
 };
 
 /* const hideBlock = (block) => {
@@ -16,8 +16,8 @@ const showBlock = (block) => {
 } */
 
 const formSender = async () => {
-    changeButtonState(formSubmitButton, false);
-    showBlock(contentBlock);
+  changeButtonState(formSubmitButton, false);
+  showBlock(contentBlock);
 };
 
 formSubmitButton.addEventListener('click', formSender);

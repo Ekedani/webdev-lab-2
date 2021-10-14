@@ -15,9 +15,22 @@ const showBlock = (block) => {
   block.style.visibility = 'hidden'
 } */
 
-const formSender = async () => {
+const parseForm = (form) => {
+  const formDataJSON = {};
+  new FormData(form).forEach((value, key) => {
+    formDataJSON[key] = value;
+  });
+  return formDataJSON;
+};
+
+const formSender = async (event) => {
+  // Prevents the default behaviour when the submit type button is pressed
+  event.preventDefault();
+
   changeButtonState(formSubmitButton, false);
   showBlock(contentBlock);
+
+  const formData = parseForm(form);
 };
 
 formSubmitButton.addEventListener('click', formSender);

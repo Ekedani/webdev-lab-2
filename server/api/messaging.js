@@ -8,8 +8,8 @@ export default (req, res) => {
       throw new Error('Request is empty');
     }
     const formData = JSON.parse(req.body);
-    messageSender.sendFormData(formData).then(res.send).catch(res.send);
+    messageSender.sendFormData(formData).then(res.send);
   } catch (error) {
-    res.send({ error: error?.message || 'Sending error'});
+    res.send({ error: error.message });
   }
 };

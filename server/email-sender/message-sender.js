@@ -26,6 +26,7 @@ export default class MessageSender {
     // Sending message
     try {
       await this.emailSender.send(cleanMessage, true);
+      return { message: 'Message was successfully sent' };
     } catch (error) {
       throw new Error('Sending error');
     }

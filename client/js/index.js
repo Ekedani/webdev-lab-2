@@ -41,10 +41,17 @@ const formSender = async (event) => {
 
   const formData = parseForm(form);
   try {
-    const res = callMessageAPI(formData, 'POST');
+    const res = await callMessageAPI(formData, 'POST');
+    console.log(res);
+    if (res.error) {
+      throw res;
+    } else {
+      alert(res.message);
+    }
   } catch (exception) {
-    alert('Unknown error happened');
+    alert(exception.error);
   }
+  
   changeButtonState(formSubmitButton, true);
   hideBlock(contentBlock);
 };

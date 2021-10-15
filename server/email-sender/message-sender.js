@@ -9,13 +9,13 @@ export default class MessageSender {
 
   async sendFormData (formData) {
     // Validating data received from the form
-    if (formProcessing.isValid(formData.firstname, formProcessing.NAME_REGEX)) {
+    if (!formProcessing.isValid(formData.firstname, formProcessing.NAME_REGEX)) {
       throw new Error('Invalid Firstname');
     }
-    if (formProcessing.isValid(formData.lastname, formProcessing.NAME_REGEX)) {
+    if (!formProcessing.isValid(formData.lastname, formProcessing.NAME_REGEX)) {
       throw new Error('Invalid Lastname');
     }
-    if (formProcessing.isValid(formData.email, formProcessing.EMAIL_REGEX)) {
+    if (!formProcessing.isValid(formData.email, formProcessing.EMAIL_REGEX)) {
       throw new Error('Invalid Email');
     }
 

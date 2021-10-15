@@ -1,5 +1,6 @@
 import { EmailSender } from './index';
 import htmlConverter from "../form-processing/html-converter";
+import sanitizeHtml from 'sanitize-html'
 
 export default class MessageSender {
   constructor () {
@@ -8,6 +9,7 @@ export default class MessageSender {
 
   async sendFormData (formData) {
     const message = htmlConverter(formData);
-    await this.emailSender.send(message, true);
+    const cleanMessage = sanitizeHtml(message);
+    await this.emailSender.send(cleanMessage, true);
   }
 }

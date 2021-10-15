@@ -2,9 +2,9 @@ const API_ROUTE = 'https://webdev-lab-2-messaging.vercel.app/api';
 
 const callMessageAPI = (data, method) => {
   return fetch(`${API_ROUTE}/messaging`, {
-      method,
-      'Content-Type': data ? 'application/json' : null,
-      body: data ? JSON.stringify(data) : null,
+    method,
+    'Content-Type': data ? 'application/json' : null,
+    body: data ? JSON.stringify(data) : null
   }).then((response) => response.json());
 };
 
@@ -21,7 +21,7 @@ const showBlock = (block) => {
 };
 
 const hideBlock = (block) => {
-  block.style.visibility = 'hidden'
+  block.style.visibility = 'hidden';
 };
 
 const parseForm = (form) => {
@@ -41,9 +41,9 @@ const formSender = async (event) => {
 
   const formData = parseForm(form);
   try {
-      const res = callMessageAPI(formData, 'POST');
-  } catch (exception){
-      alert('Unknown error happened')
+    const res = callMessageAPI(formData, 'POST');
+  } catch (exception) {
+    alert('Unknown error happened');
   }
   changeButtonState(formSubmitButton, true);
   hideBlock(contentBlock);

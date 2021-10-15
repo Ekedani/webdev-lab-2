@@ -3,8 +3,8 @@ function htmlConverter (formData) {
     <table>
         <tbody>
          <tr>
-            <th>First name</th>
-            <th>${formData.firstname}</th>
+            <td>First name</td>
+            <td>${formData.firstname}</td>
         </tr>
         <tr>
             <td>Last name</td>

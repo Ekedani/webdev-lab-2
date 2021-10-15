@@ -20,9 +20,9 @@ const showBlock = (block) => {
   block.style.visibility = 'visible';
 };
 
-/* const hideBlock = (block) => {
+const hideBlock = (block) => {
   block.style.visibility = 'hidden'
-} */
+};
 
 const parseForm = (form) => {
   const formDataJSON = {};
@@ -43,8 +43,10 @@ const formSender = async (event) => {
   try {
       const res = callMessageAPI(formData, 'POST');
   } catch (exception){
-
+      alert('Unknown error happened')
   }
+  changeButtonState(formSubmitButton, true);
+  hideBlock(contentBlock);
 };
 
 formSubmitButton.addEventListener('click', formSender);

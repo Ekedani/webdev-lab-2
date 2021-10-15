@@ -4,9 +4,12 @@ const messageSender = new MessageSender();
 
 export default (req, res) => {
   try {
+    if (!req.body) {
+      throw new Error('Request is empty');
+    }
     const formData = JSON.parse(req.body);
     messageSender.sendFormData(formData).then(res.send).catch(res.send);
   } catch (error) {
-    res.send('ERROR');
+    res.send({ error: error?.message || 'Sending error'});
   }
 };

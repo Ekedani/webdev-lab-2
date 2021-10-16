@@ -10,7 +10,7 @@ const callMessageAPI = (data, method) => {
 
 const form = document.querySelector('.contact-form');
 const formSubmitButton = form.querySelector('button');
-const contentBlock = document.querySelector('.content-block');
+const contentBlock = document.querySelector('.content-blocker');
 
 const changeButtonState = (button, isActive) => {
   button.disabled = !isActive;
@@ -46,12 +46,12 @@ const formSender = async (event) => {
     if (res.error) {
       throw res;
     } else {
-      //Success
+      // Success
       alert(res.message);
       form.reset();
     }
   } catch (exception) {
-    //Failure
+    // Failure
     alert('Error: ' + exception.error);
   }
 

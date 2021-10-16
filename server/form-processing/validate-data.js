@@ -1,5 +1,5 @@
-function isValid(field, regex) {
-    return regex.test(field);
+function isValid (field, regex) {
+  return regex.test(field);
 }
 
 export default isValid;

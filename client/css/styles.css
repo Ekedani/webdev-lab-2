@@ -7,6 +7,7 @@
     --form-submit-dark: #900;
     --form-submit-text: #fff;
     --form-submit-disabled: #e6c8cc;
+    --content-blocker: rgba(0, 0, 0, 0.5);
 
     /* Indentation settings */
     --default-padding: 10px;
@@ -79,7 +80,7 @@ body {
     background: var(--form-submit-disabled);
 }
 
-.content-block {
+.content-blocker {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,6 +89,6 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--content-blocker);
     visibility: hidden;
 }

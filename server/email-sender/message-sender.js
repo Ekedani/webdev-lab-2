@@ -23,10 +23,11 @@ export default class MessageSender {
             currentUser = this.userRepository.get(userIP);
         }
 
+        const currentDate = new Date();
         if (
             currentUser.requests >= MAXIMUM_REQUESTS_PER_SESSION &&
-            new Date() - new Date(currentUser.lastRequestDate) <
-            MINIMUM_REQUESTS_PAUSE
+            currentDate - new Date(currentUser.lastRequestDate) <
+                MINIMUM_REQUESTS_PAUSE
         ) {
             throw new Error('You have exceeded the request limit');
         }
@@ -61,6 +62,13 @@ export default class MessageSender {
         // Sending message
         try {
             await this.emailSender.send(cleanMessage, true);
+
+            //Update information about user in repo
+            this.userRepository.add(userIP, {
+                requests: currentUser.requests + 1,
+                lastRequestDate: currentDate,
+            });
+
             return { message: 'Message was successfully sent' };
         } catch (error) {
             throw new Error('Sending error');

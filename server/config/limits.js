@@ -1,4 +1,3 @@
-//10 requests per minute
 const MINIMUM_REQUESTS_PAUSE = 60000;
 const MAXIMUM_REQUESTS_PER_SESSION = 10;
 

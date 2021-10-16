@@ -1,5 +1,5 @@
-function htmlConverter (formData) {
-  return `
+function htmlConverter(formData) {
+    return `
     <table>
         <tbody>
          <tr>

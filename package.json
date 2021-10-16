@@ -4,12 +4,12 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "jslint": "eslint \"**/*.js\"",
-        "jslint:fix": "eslint \"**/*.js\" --fix",
-        "format": "prettier .",
-        "format:fix": "prettier --write .",
-        "stylelint": "stylelint \"**/*.css\"",
-        "stylelint:fix": "stylelint \"**/*.css\"",
+        "jslint": "eslint \"**/*.js\" --ignore-path .gitignore",
+        "jslint:fix": "eslint \"**/*.js\" --fix --ignore-path .gitignore",
+        "format": "prettier --check . --ignore-path .gitignore",
+        "format:fix": "prettier --write . --ignore-path .gitignore",
+        "stylelint": "stylelint \"**/*.css\" --ignore-path .gitignore",
+        "stylelint:fix": "stylelint \"**/*.css\" --fix --ignore-path .gitignore",
         "prepare": "husky install"
     },
     "keywords": [],

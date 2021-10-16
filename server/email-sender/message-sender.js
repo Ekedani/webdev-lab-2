@@ -60,6 +60,9 @@ export default class MessageSender {
         ) {
             throw new Error('Invalid email');
         }
+        if (!formData.message.trim().length) {
+            throw new Error('Message can not be empty');
+        }
 
         // Generating and sanitizing HTML
         const message = formProcessing.htmlConverter(formData);

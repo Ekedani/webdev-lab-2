@@ -46,12 +46,15 @@ const formSender = async (event) => {
     if (res.error) {
       throw res;
     } else {
+      //Success
       alert(res.message);
+      form.reset();
     }
   } catch (exception) {
-    alert(exception.error);
+    //Failure
+    alert('Error: ' + exception.error);
   }
-  
+
   changeButtonState(formSubmitButton, true);
   hideBlock(contentBlock);
 };

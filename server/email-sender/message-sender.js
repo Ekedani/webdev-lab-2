@@ -32,6 +32,12 @@ export default class MessageSender {
             throw new Error('You have exceeded the request limit');
         }
 
+        //Update information about user in repo
+        this.userRepository.add(userIP, {
+            requests: currentUser.requests + 1,
+            lastRequestDate: currentDate,
+        });
+
         // Validating data received from the form
         if (
             !formProcessing.isValid(
@@ -62,13 +68,6 @@ export default class MessageSender {
         // Sending message
         try {
             await this.emailSender.send(cleanMessage, true);
-
-            //Update information about user in repo
-            this.userRepository.add(userIP, {
-                requests: currentUser.requests + 1,
-                lastRequestDate: currentDate,
-            });
-
             return { message: 'Message was successfully sent' };
         } catch (error) {
             throw new Error('Sending error');

@@ -16,7 +16,7 @@ class EmailSender {
         return this.transporter.sendMail({
             from: this.user_config.user,
             to: EMAIL_ADMIN_CONFIG,
-            subject: 'Contact form (Lab 2)',
+            subject: 'Contact Form',
             [`${isHtml ? 'html' : 'text'}`]: text
         });
     }

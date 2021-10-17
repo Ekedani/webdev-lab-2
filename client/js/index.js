@@ -40,19 +40,15 @@ const formSender = async (event) => {
     showBlock(contentBlock);
 
     const formData = parseForm(form);
-    try {
-        const res = await callMessageAPI(formData, 'POST');
-        console.log(res);
-        if (res.error) {
-            throw res;
-        } else {
-            // Success
-            alert(res.message);
-            form.reset();
-        }
-    } catch (exception) {
-        // Failure
-        alert('Error: ' + exception.error);
+    const res = await callMessageAPI(formData, 'POST');
+    console.log(res);
+    if (res.error) {
+        // Error
+        alert('Error: ' + res.error);
+    } else {
+        // Success
+        alert(res.message);
+        form.reset();
     }
 
     changeButtonState(formSubmitButton, true);

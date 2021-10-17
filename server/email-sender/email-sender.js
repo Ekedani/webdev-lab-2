@@ -13,9 +13,8 @@ class EmailSender {
     }
 
     send(text, isHtml = false) {
-        const from = this.user_config.user;
         return this.transporter.sendMail({
-            from,
+            from: this.user_config.user,
             to: EMAIL_ADMIN_CONFIG,
             subject: 'Contact form (Lab 2)',
             [`${isHtml ? 'html' : 'text'}`]: text

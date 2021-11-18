@@ -1,4 +1,4 @@
-const API_ROUTE = 'https://webdev-lab-2-messaging.vercel.app/api';
+const API_ROUTE = process.env.API_ROUTE;
 
 const callMessageAPI = (data, method) => {
     return fetch(`${API_ROUTE}/messaging`, {

@@ -3,8 +3,8 @@ const API_ROUTE = 'https://webdev-lab-2-messaging.vercel.app/api';
 const callMessageAPI = (data, method) => {
     return fetch(`${API_ROUTE}/messaging`, {
         method,
-        'Content-Type': data ? 'application/json' : null,
-        body: data ? JSON.stringify(data) : null
+        'Content-Type': 'application/json',
+        body: JSON.stringify(data)
     }).then((response) => response.json());
 };
 

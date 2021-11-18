@@ -1,4 +1,4 @@
-const API_ROUTE = process.env.API_ROUTE;
+const API_ROUTE = 'https://webdev-lab-2-messaging.vercel.app/api';
 
 const callMessageAPI = (data, method) => {
     return fetch(`${API_ROUTE}/messaging`, {
@@ -42,15 +42,19 @@ const formSender = async (event) => {
     showBlock(contentBlock);
 
     const formData = parseForm(form);
-    const res = await callMessageAPI(formData, 'POST');
-    console.log(res);
-    if (res.error) {
-        // Error
-        alert('Error: ' + res.error);
-    } else {
-        // Success
-        alert(res.message);
-        form.reset();
+    try {
+        const res = await callMessageAPI(formData, 'POST');
+        console.log(res);
+        if (res.error) {
+            // Error
+            throw new Error(res.error);
+        } else {
+            // Success
+            alert(res.message);
+            form.reset();
+        }
+    } catch (exception) {
+        alert('Error: ' + exception.message);
     }
 
     changeButtonState(formSubmitButton, true);

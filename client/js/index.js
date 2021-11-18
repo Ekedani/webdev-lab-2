@@ -17,11 +17,11 @@ const changeButtonState = (button, isActive) => {
 };
 
 const showBlock = (block) => {
-    block.style.visibility = 'visible';
+    block.classList.remove('hidden');
 };
 
 const hideBlock = (block) => {
-    block.style.visibility = 'hidden';
+    block.classList.add('hidden');
 };
 
 const parseForm = (form) => {

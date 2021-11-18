@@ -19,6 +19,10 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 input,
 textarea {
     outline: none;
@@ -90,5 +94,4 @@ body {
     left: 0;
     right: 0;
     background-color: var(--content-blocker);
-    visibility: hidden;
 }

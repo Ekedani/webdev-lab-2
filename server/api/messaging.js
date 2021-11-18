@@ -8,7 +8,8 @@ const messageSender = new MessageSender(userInformation);
 export default (req, res) => {
     try {
         const userIP =
-            req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+            (req.headers['x-forwarded-for'] || '').split(',')[0] ||
+            req.connection.remoteAddress;
         if (!req.body) {
             throw new Error('Request is empty');
         }

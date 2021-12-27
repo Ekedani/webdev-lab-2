@@ -12,6 +12,9 @@ const callMessageAPI = (data, method) => {
 const form = document.querySelector('.contact-form');
 const formSubmitButton = form.querySelector('button');
 const contentBlock = document.querySelector('.content-blocker');
+const spinner = contentBlock.querySelector('.spinner');
+const messageBox = contentBlock.querySelector('.message-box');
+const messageBoxCloser = messageBox.querySelector('span');
 
 const changeButtonState = (button, isActive) => {
     button.disabled = !isActive;
@@ -19,6 +22,18 @@ const changeButtonState = (button, isActive) => {
 
 const showBlock = (block) => {
     block.classList.remove('hidden');
+};
+
+const showMessage = (message) => {
+    hideBlock(spinner);
+    const text = messageBox.querySelector('p');
+    text.innerHTML = message;
+    messageBox.classList.remove('hidden');
+};
+
+messageBoxCloser.onclick = function () {
+    hideBlock(messageBox);
+    hideBlock(contentBlock);
 };
 
 const hideBlock = (block) => {
@@ -37,6 +52,7 @@ const formSender = async (event) => {
     event.preventDefault();
 
     changeButtonState(formSubmitButton, false);
+    showBlock(spinner);
     showBlock(contentBlock);
 
     const formData = parseForm(form);
@@ -48,15 +64,14 @@ const formSender = async (event) => {
             throw new Error(res.error);
         } else {
             // Success
-            alert(res.message);
+            showMessage(res.message);
             form.reset();
         }
     } catch (exception) {
-        alert('Error: ' + exception.message);
+        showMessage('Error: ' + exception.message);
     }
 
     changeButtonState(formSubmitButton, true);
-    hideBlock(contentBlock);
 };
 
 formSubmitButton.addEventListener('click', formSender);

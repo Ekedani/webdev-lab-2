@@ -26,13 +26,10 @@ const hideBlock = (block) => {
 };
 
 const parseForm = (form) => {
-    const formDataJSON = {};
-    Array.from(form.elements).forEach(({ name, value }) => {
-        formDataJSON[name] = value;
-    });
-    // Last element in form.elements is submit button
-    delete formDataJSON[''];
-    return formDataJSON;
+    return Array.from(form.elements).reduce(
+        (FormData, { name, value }) => ({ ...FormData, [name]: value }),
+        {}
+    );
 };
 
 const formSender = async (event) => {

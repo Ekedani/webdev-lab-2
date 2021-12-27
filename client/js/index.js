@@ -10,15 +10,11 @@ const callMessageAPI = (data, method) => {
 };
 
 const form = document.querySelector('.contact-form');
-const formSubmitButton = form.querySelector('button');
+const formSubmitButton = form.querySelector('.submit');
 const contentBlock = document.querySelector('.content-blocker');
 const spinner = contentBlock.querySelector('.spinner');
 const messageBox = contentBlock.querySelector('.message-box');
 const messageBoxCloser = messageBox.querySelector('span');
-
-const changeButtonState = (button, isActive) => {
-    button.disabled = !isActive;
-};
 
 const showBlock = (block) => {
     block.classList.remove('hidden');
@@ -48,10 +44,6 @@ const parseForm = (form) => {
 };
 
 const formSender = async (event) => {
-    // Prevents the default behaviour when the submit type button is pressed
-    event.preventDefault();
-
-    changeButtonState(formSubmitButton, false);
     showBlock(spinner);
     showBlock(contentBlock);
 
@@ -70,8 +62,6 @@ const formSender = async (event) => {
     } catch (exception) {
         showMessage('Error: ' + exception.message);
     }
-
-    changeButtonState(formSubmitButton, true);
 };
 
 formSubmitButton.addEventListener('click', formSender);

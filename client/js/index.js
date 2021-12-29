@@ -54,11 +54,10 @@ const formSender = async (event) => {
         if (res.error) {
             // Error
             throw new Error(res.error);
-        } else {
-            // Success
-            showMessage(res.message);
-            form.reset();
         }
+        // Success
+        showMessage(res.message);
+        form.reset();
     } catch (exception) {
         showMessage('Error: ' + exception.message);
     }

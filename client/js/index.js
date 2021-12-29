@@ -1,4 +1,5 @@
 import '../css/index.css';
+
 const API_ROUTE = process.env.API_ROUTE;
 
 const callMessageAPI = (data, method) => {
@@ -16,24 +17,27 @@ const spinner = contentBlock.querySelector('.spinner');
 const messageBox = contentBlock.querySelector('.message-box');
 const messageBoxCloser = messageBox.querySelector('span');
 
-const showBlock = (block) => {
-    block.classList.remove('hidden');
+messageBoxCloser.onclick = function () {
+    hideBlock(messageBox, contentBlock);
 };
 
 const showMessage = (message) => {
     hideBlock(spinner);
     const text = messageBox.querySelector('p');
-    text.innerHTML = message;
-    messageBox.classList.remove('hidden');
+    text.textContent = message;
+    showBlock(messageBox);
 };
 
-messageBoxCloser.onclick = function () {
-    hideBlock(messageBox);
-    hideBlock(contentBlock);
+const showBlock = (...block) => {
+    block.forEach((x) => {
+        x.classList.remove('hidden');
+    });
 };
 
-const hideBlock = (block) => {
-    block.classList.add('hidden');
+const hideBlock = (...block) => {
+    block.forEach((x) => {
+        x.classList.add('hidden');
+    });
 };
 
 const parseForm = (form) => {
@@ -44,13 +48,10 @@ const parseForm = (form) => {
 };
 
 const formSender = async (event) => {
-    showBlock(spinner);
-    showBlock(contentBlock);
-
+    showBlock(spinner, contentBlock);
     const formData = parseForm(form);
     try {
         const res = await callMessageAPI(formData, 'POST');
-        console.log(res);
         if (res.error) {
             // Error
             throw new Error(res.error);

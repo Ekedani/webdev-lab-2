@@ -19,7 +19,7 @@
 
 .message-box .close:hover,
 .message-box .close:focus {
-    color: var(--message-box-close);
+    color: var(--message-box-close-hover);
     text-decoration: none;
     cursor: pointer;
 }

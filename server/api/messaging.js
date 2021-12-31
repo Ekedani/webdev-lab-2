@@ -14,12 +14,7 @@ export default (req, res) => {
             throw new Error('Request is empty');
         }
         const formData = JSON.parse(req.body);
-        messageSender
-            .sendFormData(formData, userIP)
-            .then(res.send)
-            .catch(function (error) {
-                res.send({ error: error.message });
-            });
+        messageSender.sendFormData(formData, userIP).then(res.send);
     } catch (error) {
         res.send({ error: error.message });
     }

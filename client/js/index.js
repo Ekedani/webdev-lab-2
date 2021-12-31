@@ -1,3 +1,4 @@
+import 'normalize.css';
 import '../css/index.css';
 
 const API_ROUTE = process.env.API_ROUTE;

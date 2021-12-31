@@ -9,7 +9,9 @@
     },
     "author": "Ekedani",
     "license": "ISC",
-    "dependencies": {},
+    "dependencies": {
+        "normalize.css": "^8.0.1"
+    },
     "devDependencies": {
         "autoprefixer": "^10.4.0",
         "css-loader": "^6.5.1",

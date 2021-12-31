@@ -5,22 +5,21 @@ on:
         branches: [dev]
 
 jobs:
-    lint:
+    build:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node: ['12', '14', '16']
+
         steps:
             - uses: actions/checkout@v2
-            - name: Setup node
+            - name: Use Node.js 16
               uses: actions/setup-node@v2
               with:
-                  node-version: ${{ matrix.node }}
-            - name: Installing dependencies
-              run: npm install --legacy-peer-deps
-            - name: Running Eslint
-              run: npm run jslint
-            - name: Running CSS lint
-              run: npm run stylelint
-            - name: Running Prettier
-              run: npm run format
+                  node-version: '16'
+                  cache: 'npm'
+            - name: Install Eslint
+              run: |
+                  npm ci
+            - name: Eslint working flow
+              run: |
+                  npm run eslint:check
+                  npm run stylelint:check
+                  npm run format:check

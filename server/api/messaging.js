@@ -19,7 +19,7 @@ export default (req, res) => {
             .sendFormData(formData, userIP)
             .then(res.send)
             .catch(function (error) {
-                res.send.status(error.status)({ error: error.message });
+                res.status(error.status).send({ error: error.message });
             });
     } catch (error) {
         res.status(error.status).send({ error: error.message });

@@ -1,4 +1,5 @@
 import { EmailSender } from './index';
+import { ApiError } from '../form-processing/ApiError';
 import * as formProcessing from '../form-processing/index';
 import sanitizeHtml from 'sanitize-html';
 import {
@@ -29,7 +30,7 @@ export default class MessageSender {
             currentDate - new Date(currentUser.lastRequestDate) <
                 MINIMUM_REQUESTS_PAUSE
         ) {
-            throw new Error('You have exceeded the request limit');
+            throw new ApiError('You have exceeded the request limit', 429);
         }
 
         // Update information about user in repo
@@ -45,7 +46,7 @@ export default class MessageSender {
                 formProcessing.NAME_REGEX
             )
         ) {
-            throw new Error('Invalid first name');
+            throw new ApiError('Invalid first name');
         }
         if (
             !formProcessing.isValid(
@@ -73,7 +74,7 @@ export default class MessageSender {
             await this.emailSender.send(cleanMessage, true);
             return { message: 'Message was successfully sent' };
         } catch (error) {
-            throw new Error('Sending error');
+            throw new ApiError('Sending error', 500);
         }
     }
 }

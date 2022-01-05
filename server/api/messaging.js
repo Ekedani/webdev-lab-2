@@ -1,5 +1,6 @@
 import { MessageSender } from '../email-sender/index.js';
 import { UserRepository } from '../user-data/user-repository';
+import { ApiError } from '../form-processing/ApiError';
 
 // For keeping information about user IP
 const userInformation = new UserRepository();
@@ -11,16 +12,16 @@ export default (req, res) => {
             (req.headers['x-forwarded-for'] || '').split(',')[0] ||
             req.connection.remoteAddress;
         if (!req.body) {
-            throw new Error('Request is empty');
+            throw new ApiError('Request is empty');
         }
         const formData = JSON.parse(req.body);
         messageSender
             .sendFormData(formData, userIP)
             .then(res.send)
             .catch(function (error) {
-                res.send({ error: error.message });
+                res.send.status(error.status)({ error: error.message });
             });
     } catch (error) {
-        res.send({ error: error.message });
+        res.status(error.status).send({ error: error.message });
     }
 };

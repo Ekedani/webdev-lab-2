@@ -1,2 +1,2 @@
-export { default as EmailSender } from './email-sender';
-export { default as MessageSender } from './message-sender.js';
+export { default as EmailSender } from './EmailSender';
+export { default as MessageSender } from './MessageSender.js';

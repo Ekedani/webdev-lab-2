@@ -8,7 +8,7 @@ import {
 
 // For keeping information about user IP
 const userRepository = new UserRepository();
-const messageSender = new MessageSender(userRepository);
+const messageSender = new MessageSender();
 
 export default (req, res) => {
     const userIP =
@@ -47,7 +47,7 @@ export default (req, res) => {
 
         const formData = JSON.parse(req.body);
         messageSender
-            .sendFormData(formData, userIP)
+            .sendFormData(formData)
             .then(res.send)
             .catch(function (error) {
                 res.status(error.status).send({ error: error.message });

@@ -4,12 +4,11 @@ import * as formProcessing from '../form-processing/index';
 import sanitizeHtml from 'sanitize-html';
 
 export default class MessageSender {
-    constructor(userInformation) {
+    constructor() {
         this.emailSender = new EmailSender();
-        this.userRepository = userInformation;
     }
 
-    async sendFormData(formData, userIP) {
+    async sendFormData(formData) {
         // Validating data received from the form
         if (
             !formProcessing.isValid(

@@ -25,15 +25,15 @@ export default class MessageSender {
                 formProcessing.NAME_REGEX
             )
         ) {
-            throw new Error('Invalid last name');
+            throw new ApiError('Invalid last name');
         }
         if (
             !formProcessing.isValid(formData.email, formProcessing.EMAIL_REGEX)
         ) {
-            throw new Error('Invalid email');
+            throw new ApiError('Invalid email');
         }
         if (!formData.message.trim().length) {
-            throw new Error('Message can not be empty');
+            throw new ApiError('Message can not be empty');
         }
 
         // Generating and sanitizing HTML

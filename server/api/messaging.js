@@ -7,8 +7,8 @@ import {
 } from '../config';
 
 // For keeping information about user IP
-const userInformation = new UserRepository();
-const messageSender = new MessageSender(userInformation);
+const userRepository = new UserRepository();
+const messageSender = new MessageSender(userRepository);
 
 export default (req, res) => {
     const userIP =
@@ -17,13 +17,13 @@ export default (req, res) => {
 
     const currentDate = new Date();
     // Check if user exceeded the request limit
-    let currentUser = userInformation.get(userIP);
+    let currentUser = userRepository.get(userIP);
     if (!currentUser) {
-        this.userRepository.add(userIP, {
+        userRepository.add(userIP, {
             requests: 0,
             lastRequestDate: currentDate
         });
-        currentUser = this.userRepository.get(userIP);
+        currentUser = userRepository.get(userIP);
     }
 
     try {
@@ -40,7 +40,7 @@ export default (req, res) => {
         }
 
         // Update information about user in repo
-        this.userRepository.add(userIP, {
+        userRepository.add(userIP, {
             requests: currentUser.requests + 1,
             lastRequestDate: currentDate
         });

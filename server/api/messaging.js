@@ -10,7 +10,7 @@ import {
 const userRepository = new UserRepository();
 const messageSender = new MessageSender();
 
-export default (req, res) => {
+export default async (req, res) => {
     const userIP =
         (req.headers['x-forwarded-for'] || '').split(',')[0] ||
         req.connection.remoteAddress;
@@ -46,12 +46,8 @@ export default (req, res) => {
         });
 
         const formData = JSON.parse(req.body);
-        messageSender
-            .sendFormData(formData)
-            .then(res.send)
-            .catch(function (error) {
-                res.status(error.status).send({ error: error.message });
-            });
+        const resultData = await messageSender.sendFormData(formData);
+        res.send(resultData);
     } catch (error) {
         res.status(error.status).send({ error: error.message });
     }

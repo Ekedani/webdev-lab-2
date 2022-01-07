@@ -49,6 +49,6 @@ export default async (req, res) => {
         const resultData = await messageSender.sendFormData(formData);
         res.send(resultData);
     } catch (error) {
-        res.status(error.status).send({ error: error.message });
+        res.status(error.status || 500).send({ error: error.message });
     }
 };

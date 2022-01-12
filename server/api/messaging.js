@@ -11,25 +11,17 @@ const userRepository = new UserRepository();
 const messageSender = new MessageSender();
 
 export default async (req, res) => {
-    const userIP =
-        (req.headers['x-forwarded-for'] || '').split(',')[0] ||
-        req.connection.remoteAddress;
+    try {
+        const userIP =
+            (req.headers['x-forwarded-for'] || '').split(',')[0] ||
+            req.connection.remoteAddress;
 
-    const currentDate = new Date();
-    // Check if user exceeded the request limit
-    let currentUser = userRepository.get(userIP);
-    if (!currentUser) {
-        userRepository.add(userIP, {
+        const currentDate = new Date();
+        // Check if user exceeded the request limit
+        const currentUser = userRepository.get(userIP) || {
             requests: 0,
             lastRequestDate: currentDate
-        });
-        currentUser = userRepository.get(userIP);
-    }
-
-    try {
-        if (!req.body) {
-            throw new ApiError('Request is empty', 204);
-        }
+        };
 
         if (
             currentUser.requests >= MAXIMUM_REQUESTS_PER_SESSION &&
@@ -44,6 +36,10 @@ export default async (req, res) => {
             requests: currentUser.requests + 1,
             lastRequestDate: currentDate
         });
+
+        if (!req.body) {
+            throw new ApiError('Request is empty', 204);
+        }
 
         const formData = JSON.parse(req.body);
         const resultData = await messageSender.sendFormData(formData);

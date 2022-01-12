@@ -1,0 +1,25 @@
+@import './root.css';
+
+.message-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--form-fields);
+    padding: 20px;
+    width: 30%;
+}
+
+.message-box .close {
+    color: var(--message-box-close);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.message-box .close:hover,
+.message-box .close:focus {
+    color: var(--message-box-close-hover);
+    text-decoration: none;
+    cursor: pointer;
+}

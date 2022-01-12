@@ -1,0 +1,15 @@
+:root {
+    /* Color scheme */
+    --background-primary: #2b2d42;
+    --form-primary: #8d99ae;
+    --form-fields: #edf2f4;
+    --form-submit-primary: #ef233c;
+    --form-submit-dark: #900;
+    --form-submit-text: #fff;
+    --content-blocker: rgba(0, 0, 0, 0.5);
+    --message-box-close: #aaa;
+    --message-box-close-hover: #000;
+
+    /* Indentation settings */
+    --default-padding: 10px;
+}

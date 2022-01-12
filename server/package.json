@@ -1,0 +1,15 @@
+{
+    "name": "webdev-2-mailer",
+    "version": "1.0.0",
+    "description": "Serverless function for sending messages",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Ekedani",
+    "license": "ISC",
+    "dependencies": {
+        "nodemailer": "^6.7.0",
+        "sanitize-html": "^2.5.2"
+    }
+}
